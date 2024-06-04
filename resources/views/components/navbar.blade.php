@@ -10,6 +10,7 @@
         <li><a href="{{route('homepage')}}" class="nav-link px-2 @if (request()->routeIs('homepage'))  link-secondary @endif">Home</a></li>
         <li><a href="{{route('posts.index')}}" class="nav-link px-2 @if (request()->routeIs('posts.index'))  link-secondary @endif">Post</a></li>
         <li><a href="{{route('tags.index')}}" class="nav-link px-2 @if (request()->routeIs('tags.index'))  link-secondary @endif">Tags</a></li>
+        <li><a href="{{route('users.index')}}" class="nav-link px-2 @if (request()->routeIs('users.index'))  link-secondary @endif">Autori dei post</a></li>
       
     </ul>
     @guest
