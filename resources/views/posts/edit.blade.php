@@ -4,11 +4,11 @@
         <div class="row gx-5 justify-content-center ">
             <div class="col-lg-8 col-xl-6 border p-5 rounded">
 
-                <form action="{{ route('posts.storeU',['user'=> Auth::user()->id]) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('posts.update',['post'=>$post->id]) }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @method('POST')
+                    @method('PUT')
                     <div class="form-floating mb-3">
-                        <input class="form-control" id="title" value="{{ old('title') }}" name="title"
+                        <input class="form-control" id="title" value="{{ $post->title }}" name="title"
                             type="text">
                         <label for="title">Titolo Post</label>
                         @error('title')
@@ -18,7 +18,7 @@
 
                     <div class="form-floating mb-3">
                         
-                            <textarea class="form-control" name="body" id="body" cols="30" style="height: 250px" rows="10">{{ old('body') }}</textarea>
+                            <textarea class="form-control" name="body" id="body" cols="30" style="height: 250px" rows="10">{{ $post->body }}</textarea>
                         <label for="body">Testo</label>
                         @error('body')
                             {{ $message }}
@@ -28,13 +28,15 @@
                     <div class="mb-3">
                         <div class="form-control">
                             @forelse ($tags as $tag)
-                                <input type="checkbox" id="tags" name="tags[]" value="{{ $tag->id }}">
+                                <input type="checkbox" id="tags" name="tags[]" value="{{ $tag->id }}"
+                                @checked($post->tags->contains($tag->id))>
                                 <label for="tags">{{ $tag->name }}</label>
                             @empty
                             <p>Ancora nessun Tag creato. <a href="{{route('tags.index')}}">Crea nuovi tag</a></p>
                                 @endforelse
                         </div>
                     </div>
+                    
 
                     
                     <div class="d-grid">

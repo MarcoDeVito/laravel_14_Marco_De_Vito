@@ -82,7 +82,7 @@ class PostController extends Controller implements HasMiddleware
         $post->update([
             'title'=> $request->title,
             'body'=> $request->body,
-            'user_id'=>$request->user_id 
+            'user_id'=>$post->user_id 
             
         ]);
         $post->tags()->detach();
