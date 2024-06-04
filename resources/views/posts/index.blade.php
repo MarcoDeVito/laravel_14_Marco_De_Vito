@@ -43,10 +43,13 @@
                                         Visualizza
                                     </a>
                                     @auth
+                                    @if (Auth::user()->id==$post->user->id)
+                                        
                                     <a href="{{route('posts.edit',['post'=>$post->id])}}"
                                             class="btn btn-warning me-md-2">
                                             Modifica
                                         </a>
+                                   
                                         
                                             <form action="{{route('posts.destroy',['post'=>$post->id])}}" method="post">
                                             
@@ -55,6 +58,7 @@
                                                 <button type="submit" class="btn btn-danger me-md-2">Elimina</button>
                                            
                                             </form>
+                                            @endif
                                     @endauth
 
                                  

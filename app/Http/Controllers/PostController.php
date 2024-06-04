@@ -77,8 +77,14 @@ class PostController extends Controller implements HasMiddleware
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePostRequest $request, Post $post)
+    public function update(UpdatePostRequest $request, Post $post,$user)
     {
+    //    dd($user." ".$post->user_id);
+       
+        if($user!=$post->user_id ){
+            return redirect()->route('posts.index')->with('success', 'Non Hai i permessi per Modificare questo post');
+        }
+
         $post->update([
             'title'=> $request->title,
             'body'=> $request->body,

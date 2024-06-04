@@ -8,6 +8,8 @@
 
     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
         <li><a href="{{route('homepage')}}" class="nav-link px-2 @if (request()->routeIs('homepage'))  link-secondary @endif">Home</a></li>
+        <li><a href="{{route('posts.index')}}" class="nav-link px-2 @if (request()->routeIs('posts.index'))  link-secondary @endif">Post</a></li>
+        <li><a href="{{route('tags.index')}}" class="nav-link px-2 @if (request()->routeIs('tags.index'))  link-secondary @endif">Tags</a></li>
       
     </ul>
     @guest
