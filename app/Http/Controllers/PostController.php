@@ -42,13 +42,13 @@ class PostController extends Controller implements HasMiddleware
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePostRequest $request, $user)
+    public function store(StorePostRequest $request)
     {
     //    dd($request);
         $post= Post::create([
             'title'=> $request->title,
             'body'=> $request->body,
-            'user_id'=>$user                             
+            'user_id'=> auth()->user()->id                             
 
         ]);
 
@@ -77,13 +77,11 @@ class PostController extends Controller implements HasMiddleware
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePostRequest $request, Post $post,$user)
+    public function update(UpdatePostRequest $request, Post $post)
     {
     //    dd($user." ".$post->user_id);
        
-        if($user!=$post->user_id ){
-            return redirect()->route('posts.index')->with('success', 'Non Hai i permessi per Modificare questo post');
-        }
+     
 
         $post->update([
             'title'=> $request->title,

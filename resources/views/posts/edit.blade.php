@@ -4,7 +4,7 @@
         <div class="row gx-5 justify-content-center ">
             <div class="col-lg-8 col-xl-6 border p-5 rounded">
 
-                <form action="{{ route('posts.updateU',['post'=>$post->id,'user'=> Auth::user()->id]) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('posts.update',['post'=>$post->id]) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-floating mb-3">
